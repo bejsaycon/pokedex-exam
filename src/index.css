@@ -9,7 +9,6 @@
 h2,
 h3,
 h4,
-.body1-fonts,
 .body2-fonts,
 .body3-fonts {
   @apply leading-4;
@@ -101,7 +100,7 @@ h4,
     @apply flex items-center justify-center flex-wrap gap-3 mx-0 my-4;
 }
 .list-item {
-    @apply shadow-[0px_1px_3px_1px_rgba(0,0,0,0.2)] bg-white w-[8.85rem] h-[8.85rem] text-center no-underline cursor-pointer rounded-lg;
+    @apply shadow-[0px_1px_3px_1px_rgba(0,0,0,0.2)] bg-white w-[8.85rem] h-[8.85rem] text-center no-underline cursor-pointer rounded-lg list-none;;
 }
 .list-item .number-wrap {
     @apply min-h-[16px] text-right text-[#666666] px-2 py-0;
