@@ -1,51 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Header from './Header';
 import PokemonList from './PokemonList';
-import axios from 'axios';
-import Pagination from './Pagination';
 
 function App() {
-  const [pokemon, setPokemon] = useState(['test', 'test2'])
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
-  const [nextPageUrl, setNextPageUrl] = useState()
-  const [prevPageUrl, setPrevPageUrl] = useState()
-  const [loading, setLoading] = useState(true)
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true)
-    let cancel
-    axios.get(currentPageUrl, {
-      cancelToken: new axios.CancelToken(c => cancel = c)
-    }).then(res => {
-      setLoading(false)
-      setNextPageUrl(res.data.next)
-      setPrevPageUrl(res.data.previous)
-      setPokemon(res.data.results.map(p => p.name))
-    })
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
+      .then(response => response.json())
+      .then(data => {
+        setPokemons(data.results);
+        setLoading(false);
+      });
+  }, []);
 
-    return () => cancel()
-  }, [currentPageUrl])
+  const fetchPokemonDataBeforeRedirect = async (pokemonID) => {
+    // Add your logic to fetch Pokémon data before redirecting.
+    // Return true if the fetch is successful, otherwise return false.
+  };
 
-  function gotoNextPage() {
-    setCurrentPageUrl(nextPageUrl)
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
-  function gotoPrevPage() {
-    setCurrentPageUrl(prevPageUrl)
-  }
-
-  if (loading) return "Loading..."
   return (
-    <>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-
-    <PokemonList pokemon={pokemon} />
-    <Pagination
-      gotoNextPage={nextPageUrl ? gotoNextPage : null}
-      gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-    />
-  </>
+    <div className="App">
+      <Header />
+      <PokemonList pokemons={pokemons} fetchPokemonDataBeforeRedirect={fetchPokemonDataBeforeRedirect} />
+    </div>
   );
 }
 

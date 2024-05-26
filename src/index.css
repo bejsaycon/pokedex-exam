@@ -1,3 +1,121 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.main {
+    @apply bg-[#efefef] h-screen w-screen flex flex-col items-center gap-4 m-0 p-0;
+}
+
+h2,
+h3,
+h4,
+.body1-fonts,
+.body2-fonts,
+.body3-fonts {
+  @apply leading-4;
+}
+
+.header.home {
+    @apply w-[90%];
+}
+
+.detail-main .header {
+    @apply relative z-[2] pt-5 pb-6 px-5;
+}
+
+.container {
+    @apply w-full m-0;
+}
+
+.search-wrapper,
+.search-wrap {
+  @apply flex items-center w-full gap-4;
+}
+
+.search-wrap {
+    @apply relative bg-white shadow-[0px_1px_3px_1px_rgba(0,0,0,0.25)_inset] h-8 gap-2 rounded-2xl;
+}
+
+.search-wrap svg path {
+    @apply fill-[#efef];
+}
+
+.search-wrap > input {
+    @apply w-3/5 border-[none];
+}
+
+.search-icon {
+    @apply ml-4;
+}
+
+.search-close-icon {
+    @apply absolute hidden cursor-pointer right-4;
+}
+.search-close-icon-visible {
+    @apply block text-[black];
+}
+  
+.sort-wrapper {
+    @apply relative;
+}
+
+.sort-wrap {
+    @apply bg-[#a18888] min-w-[2rem] min-h-[2rem] shadow-[0px_1px_3px_1px_rgba(0,0,0,0.25)_inset] flex items-center justify-center relative rounded-[100%];
+}
+
+.filter-wrapper {
+    @apply absolute shadow-[0px_3px_12px_3px_rgba(0,0,0,0.2)] min-w-[113px] hidden z-[5000] pt-0 pb-1 px-1 rounded-xl border-t-0 border-4 border-solid border-[#efefef] right-0 top-10;
+    background: #efefef;
+}
+.filter-wrapper-open {
+    @apply block;
+}
+.filter-wrapper-overlay .main::before {
+    @apply bg-[rgba(0,0,0,0.4)] w-full h-full absolute z-[2] inset-0;
+}
+.filter-wrapper > .body2-fonts {
+    @apply text-[#a18888] font-bold px-5 py-4;
+}
+  
+.filter-wrap {
+    @apply bg-white shadow-[0px_1px_3px_1px_rgba(0,0,0,0.25)_inset] px-5 py-4 rounded-lg;
+}
+.filter-wrap > div {
+    @apply flex items-center gap-2 mb-4 last:mb-0;
+}
+.filter-wrap input {
+    @apply accent-[#efefef];
+}
+
+.pokemon-list {
+    background-color: #ffffff;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 0.75rem;
+    min-height: calc(85.5% - 1rem);
+    width: calc(100% - 1rem);
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.list-wrapper {
+    @apply flex items-center justify-center flex-wrap gap-3 mx-0 my-4;
+}
+.list-item {
+    @apply shadow-[0px_1px_3px_1px_rgba(0,0,0,0.2)] bg-white w-[8.85rem] h-[8.85rem] text-center no-underline cursor-pointer rounded-lg;
+}
+.list-item .number-wrap {
+    @apply min-h-[16px] text-right text-[#666666] px-2 py-0;
+}
+.list-item .name-wrap {
+    @apply bg-[#efefef] text-[#212121] mt-[-18px] pt-6 pb-1 px-2 rounded-[7px];
+}
+.list-item .img-wrap {
+    @apply w-[72px] h-[72px] m-auto;
+}
+.list-item .img-wrap img {
+    @apply w-full h-full;
+}
+.caption-fonts {
+    @apply text-[8px] leading-3;
+}
+  
